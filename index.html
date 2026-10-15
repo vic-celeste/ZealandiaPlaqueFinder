@@ -1,74 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Find your plaque | Zealandia</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#e9ede6; --ink:#17281e; --muted:#53655a; --forest:#1d3a2b; --fern:#3f7a52;
-  --brass-1:#878787; --brass-2:#cccccc; --brass-ink:#575757; --card:#fbfcfa; --line:#cdd6cb;
-}
-@media (prefers-color-scheme:dark){
-  :root{--bg:#101a14; --ink:#e7eee9; --muted:#9db0a3; --forest:#0a120d; --card:#18251d; --line:#2a3a30}
-}
-*{box-sizing:border-box}
-html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.5 "Public Sans",system-ui,sans-serif}
-header{background:var(--forest);color:#f1f5ef;padding:2.5rem 1.25rem 4.5rem}
-.wrap{max-width:46rem;margin:0 auto}
-h1{font:700 clamp(2rem,6vw,3rem)/1.1 Fraunces,Georgia,serif;margin:0 0 .5rem}
-header p{margin:0;max-width:34rem;color:#c3d1c6}
-.search{margin-top:-2.25rem}
-label{position:absolute;left:-9999px}
-input[type=search]{width:100%;padding:1rem 1.1rem;font:inherit;font-size:1.05rem;color:var(--ink);background:var(--card);
-  border:2px solid var(--line);border-radius:.6rem;box-shadow:0 6px 18px rgba(0,0,0,.15)}
-input[type=search]:focus-visible{outline:3px solid var(--fern);outline-offset:2px}
-.meta{display:flex;justify-content:space-between;align-items:center;margin:1.25rem 0 .75rem;color:var(--muted);font-size:.9rem}
-.plaque{background:var(--card);border:1px solid var(--line);border-radius:.6rem;margin-bottom:1rem;overflow:hidden}
-.plate{margin:.75rem;padding:1.1rem 1.25rem;border-radius:.3rem;text-align:center;
-  background:linear-gradient(135deg,var(--brass-1),var(--brass-2) 55%,var(--brass-1));
-  border:2px solid #575757;box-shadow:inset 0 0 0 4px rgba(255,255,255,.18)}
-.plate q{display:block;quotes:none;font:700 1.25rem/1.35 Fraunces,Georgia,serif;color:var(--brass-ink);text-shadow:0 1px 0 rgba(255,255,255,.35)}
-.details{padding:.25rem 1.25rem 1.1rem;display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;align-items:center;justify-content:space-between}
-.details b{display:block;font-weight:600}
-.details span.k{display:block;font-size:.8rem;color:var(--muted)}
-.cond-wrap{margin-left:auto;text-align:right}
-.who + .dir{margin-left:auto}
-.cond{display:flex;gap:3px;margin-top:.2rem;justify-content:flex-end}
-.cond i{width:.7rem;height:.7rem;border-radius:50%;background:var(--line)}
-.cond i.on{background:var(--fern)}
-a.dir{display:inline-block;padding:.65rem 1rem;background:var(--forest);color:#fff;border-radius:.45rem;text-decoration:none;font-weight:600}
-a.dir:hover{background:var(--fern)}
-a.dir:focus-visible,button:focus-visible{outline:3px solid var(--fern);outline-offset:2px}
-.msg{text-align:center;padding:2.5rem 1rem;color:var(--muted)}
-button.more{display:block;margin:1rem auto 3rem;padding:.7rem 1.4rem;font:inherit;font-weight:600;border:2px solid var(--forest);
-  background:transparent;color:var(--ink);border-radius:.45rem;cursor:pointer}
-footer{padding:0 1.25rem 2rem;text-align:center;color:var(--muted);font-size:.85rem}
-</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Find your plaque | Zealandia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Public+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #e9ede6;
+            --ink: #17281e;
+            --muted: #53655a;
+            --forest: #1d3a2b;
+            --fern: #3f7a52;
+            --brass-1: #878787;
+            --brass-2: #cccccc;
+            --brass-ink: #575757;
+            --card: #fbfcfa;
+            --line: #cdd6cb;
+        }
+
+        @media (prefers-color-scheme:dark) {
+            :root {
+                --bg: #101a14;
+                --ink: #e7eee9;
+                --muted: #9db0a3;
+                --forest: #0a120d;
+                --card: #18251d;
+                --line: #2a3a30
+            }
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px)
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font: 400 1rem/1.5 "Public Sans", system-ui, sans-serif
+        }
+
+        header {
+            background: var(--forest);
+            color: #f1f5ef;
+            padding: 2.5rem 1.25rem 4.5rem
+        }
+
+        .wrap {
+            max-width: 46rem;
+            margin: 0 auto
+        }
+
+        h1 {
+            font: 700 clamp(2rem, 6vw, 3rem)/1.1 Fraunces, Georgia, serif;
+            margin: 0 0 .5rem
+        }
+
+        header p {
+            margin: 0;
+            max-width: 34rem;
+            color: #c3d1c6
+        }
+
+        .search {
+            margin-top: -2.25rem
+        }
+
+        label {
+            position: absolute;
+            left: -9999px
+        }
+
+        input[type=search] {
+            width: 100%;
+            padding: 1rem 1.1rem;
+            font: inherit;
+            font-size: 1.05rem;
+            color: var(--ink);
+            background: var(--card);
+            border: 2px solid var(--line);
+            border-radius: .6rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .15)
+        }
+
+        input[type=search]:focus-visible {
+            outline: 3px solid var(--fern);
+            outline-offset: 2px
+        }
+
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1.25rem 0 .75rem;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .plaque {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: .6rem;
+            margin-bottom: 1rem;
+            overflow: hidden
+        }
+
+        .plate {
+            margin: .75rem;
+            padding: 1.1rem 1.25rem;
+            border-radius: .3rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--brass-1), var(--brass-2) 55%, var(--brass-1));
+            border: 2px solid #575757;
+            box-shadow: inset 0 0 0 4px rgba(255, 255, 255, .18)
+        }
+
+        .plate q {
+            display: block;
+            quotes: none;
+            font: 700 1.25rem/1.35 Fraunces, Georgia, serif;
+            color: var(--brass-ink);
+            text-shadow: 0 1px 0 rgba(255, 255, 255, .35)
+        }
+
+        .details {
+            padding: .25rem 1.25rem 1.1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: .75rem 1.5rem;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .details b {
+            display: block;
+            font-weight: 600
+        }
+
+        .details span.k {
+            display: block;
+            font-size: .8rem;
+            color: var(--muted)
+        }
+
+        .cond-wrap {
+            margin-left: auto;
+            text-align: right
+        }
+
+        .who+.dir {
+            margin-left: auto
+        }
+
+        .cond {
+            display: flex;
+            gap: 3px;
+            margin-top: .2rem;
+            justify-content: flex-end
+        }
+
+        .cond i {
+            width: .7rem;
+            height: .7rem;
+            border-radius: 50%;
+            background: var(--line)
+        }
+
+        .cond i.on {
+            background: var(--fern)
+        }
+
+        a.dir {
+            display: inline-block;
+            padding: .65rem 1rem;
+            background: var(--forest);
+            color: #fff;
+            border-radius: .45rem;
+            text-decoration: none;
+            font-weight: 600
+        }
+
+        a.dir:hover {
+            background: var(--fern)
+        }
+
+        a.dir:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--fern);
+            outline-offset: 2px
+        }
+
+        .msg {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            color: var(--muted)
+        }
+
+        button.more {
+            display: block;
+            margin: 1rem auto 3rem;
+            padding: .7rem 1.4rem;
+            font: inherit;
+            font-weight: 600;
+            border: 2px solid var(--forest);
+            background: transparent;
+            color: var(--ink);
+            border-radius: .45rem;
+            cursor: pointer
+        }
+
+        footer {
+            padding: 0 1.25rem 2rem;
+            text-align: center;
+            color: var(--muted);
+            font-size: .85rem
+        }
+    </style>
 </head>
+
 <body>
-<header><div class="wrap">
-  <h1>Find your plaque</h1>
-  <p>Search by the name on the plaque, who bought it, or a word from the inscription, then get directions to it in the sanctuary.</p>
-</div></header>
+    <header>
+        <div class="wrap">
+            <h1>Find your plaque</h1>
+            <p>Search by the name on the plaque, who bought it, or a word from the inscription, then get directions to
+                it in the sanctuary.</p>
+        </div>
+    </header>
 
-<main class="wrap" style="padding:0 1.25rem">
-  <div class="search">
-    <label for="q">Search plaques</label>
-    <input id="q" type="search" placeholder="Try a surname, club or year" autocomplete="off">
-  </div>
-  <div class="meta"><span id="count" aria-live="polite">Loading plaques...</span></div>
-  <div id="list"></div>
-  <button class="more" id="more" hidden>Show more plaques</button>
-</main>
-<footer>Zealandia Ecosanctuary. Please stay on the tracks and check opening hours before you visit.</footer>
+    <main class="wrap" style="padding:0 1.25rem">
+        <div class="search">
+            <label for="q">Search plaques</label>
+            <input id="q" type="search" placeholder="Try a surname, club or year" autocomplete="off">
+        </div>
+        <div class="meta"><span id="count" aria-live="polite">Loading plaques...</span></div>
+        <div id="list"></div>
+        <button class="more" id="more" hidden>Show more plaques</button>
+    </main>
+    <footer>Zealandia Te Māra a Tāne. Please stay on the tracks and check opening hours before you visit.</footer>
 
-<script>
-// 1. Paste your Apps Script web app URL here (ends in /exec)
+    <script>
+        // 1. Paste your Apps Script web app URL here (ends in /exec)
 const API_URL = "https://script.google.com/macros/s/AKfycbwDkWNAaxHywt8IPh854m6o94DJz0zUU1um8V1AoJ62NYTfticjS5eyFN9hXYvegwL0/exec";
 // 2. Set to false to hide the condition rating from visitors
 const SHOW_CONDITION = true;
@@ -95,7 +277,7 @@ function card(p){
 
   const d = el("div","details");
   const who = el("div","who");
-  who.appendChild(el("span","k","Bought by"));
+  who.appendChild(el("span","k","Purchased by"));
   who.appendChild(el("b",null,p.purchaser || "Not recorded"));
   d.appendChild(who);
 
@@ -139,6 +321,7 @@ $("more").addEventListener("click", () => { shown += PAGE; render(); });
 fetch(API_URL).then(r => r.json()).then(data => { all = data.plaques; render(); })
   .catch(() => { $("count").textContent = "";
     $("list").appendChild(el("p","msg","We couldn't load the plaque list. Please refresh the page or try again later.")); });
-</script>
+    </script>
 </body>
+
 </html>
