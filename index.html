@@ -17,8 +17,8 @@
             --muted: #53655a;
             --forest: #1d3a2b;
             --fern: #3f7a52;
-            --brass-1: #878787;
-            --brass-2: #cccccc;
+            --brass-1: #cccccc;
+            --brass-2: #9c9c9c;
             --brass-ink: #575757;
             --card: #fbfcfa;
             --line: #cdd6cb;
@@ -220,6 +220,10 @@
             cursor: pointer
         }
 
+        button.more[hidden] {
+            display: none
+        }
+
         footer {
             padding: 0 1.25rem 2rem;
             text-align: center;
@@ -277,7 +281,7 @@ function card(p){
 
   const d = el("div","details");
   const who = el("div","who");
-  who.appendChild(el("span","k","Purchased by"));
+  who.appendChild(el("span","k","Bought by"));
   who.appendChild(el("b",null,p.purchaser || "Not recorded"));
   d.appendChild(who);
 
