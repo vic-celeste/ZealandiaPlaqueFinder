@@ -234,13 +234,19 @@
             color: var(--muted);
             font-size: .85rem
         }
+.brand{display:flex;align-items:center;gap:1.25rem;margin-bottom:.75rem}
+.logo{height:4.5rem;width:auto;flex-shrink:0}
+.brand h1{margin:0}
     </style>
 </head>
 
 <body>
     <header>
         <div class="wrap">
-            <h1>Find your plaque</h1>
+<div class="brand">
+  <img class="logo" src="logo.png" alt="Zealandia Te Māra a Tāne">
+  <h1>Find your plaque</h1>
+</div>
             <p>Search by the name on the plaque, who bought it, or a word from the inscription, then get directions to
                 it in the sanctuary.</p>
         </div>
@@ -255,7 +261,7 @@
         <div id="list"></div>
         <button class="more" id="more" hidden>Show more plaques</button>
     </main>
-    <footer>Zealandia Te Māra a Tāne. Directions show a general area and don't pinpoint the plaques location. Please stay on the tracks and check opening hours before you visit.</footer>
+    <footer>Zealandia Te Māra a Tāne. Directions are general areas and don't pinpoint the plaques location. Please stay on the tracks and check opening hours before you visit.</footer>
 
     <script>
         // 1. Paste your Apps Script web app URL here (ends in /exec)
